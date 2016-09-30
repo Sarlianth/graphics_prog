@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+
+    <style type="text/css">
+      body {
+          background-color: white;
+      }
+	  
+	  canvas {
+		  border: 3px dashed #000000;
+		  
+	  }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id="canvasOne"></canvas>
+
+    <script type="text/javascript">
+      // Gets a handle to the element with id canvasOne.
+      var canvas = document.getElementById("canvasOne");
+      // Set the canvas up for drawing in 2D.
+      var ctx = canvas.getContext("2d");
+	  
+	  canvas.width = 600;
+	  canvas.height = 600;
+	  
+	  var ball = {
+		xpos: 50
+		,ypos: 50
+		,radius: 30
+		, move: function(x, y) {
+			this.xpos = x;
+			this.ypos = y;
+		}
+		, resize: function(newRadius) {
+			this.radius = newRadius;
+		}
+		, draw: function() {
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius, 0, 2*Math.PI);
+			ctx.fillStyle = "rgba(241, 249, 0, 0.7)";
+			ctx.fill();
+			ctx.stroke();
+		}
+		, drawPizza: function() {
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius, 0, 2*Math.PI);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.25)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.25)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.50)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.50)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.75)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.75)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1)))+this.xpos, (this.radius*(Math.sin(Math.PI*1)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.25)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.25)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.50)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.50)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.75)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.75)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*2)))+this.xpos, (this.radius*(Math.sin(Math.PI*2)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgba(249, 187, 0, 1)";
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius-10, 0, 2*Math.PI);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.25)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.25)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.50)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.50)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*0.75)))+this.xpos, (this.radius*(Math.sin(Math.PI*0.75)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1)))+this.xpos, (this.radius*(Math.sin(Math.PI*1)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.25)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.25)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.50)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.50)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*1.75)))+this.xpos, (this.radius*(Math.sin(Math.PI*1.75)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.lineTo((this.radius*(Math.cos(Math.PI*2)))+this.xpos, (this.radius*(Math.sin(Math.PI*2)))+this.ypos);
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgb(251, 255, 140)";
+			ctx.fill();
+			ctx.stroke();
+		}
+		, drawPizza7: function() {
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius, 0, 2*Math.PI);
+			for(var i=0; i<=6; i++){
+				var radians = ((Math.PI/7)*2) + (i * 0.2857142857142857);
+				ctx.moveTo(this.xpos, this.ypos);
+				ctx.lineTo((this.radius*(Math.cos(Math.PI*radians)))+this.xpos, (this.radius*(Math.sin(Math.PI*radians)))+this.ypos);
+			}
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgba(249, 187, 0, 1)";
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius-10, 0, 2*Math.PI);
+			for(var i=0; i<=6; i++){
+				var radians = ((Math.PI/7)*2) + (i * 0.2857142857142857);
+				ctx.moveTo(this.xpos, this.ypos);
+				ctx.lineTo((this.radius*(Math.cos(Math.PI*radians)))+this.xpos, (this.radius*(Math.sin(Math.PI*radians)))+this.ypos);
+			}
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgb(251, 255, 140)";
+			ctx.fill();
+			ctx.stroke();
+		}
+		, drawPizzaSlices: function(slices) {
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius, 0, 2*Math.PI);
+			for(var i=0; i<=slices; i++){
+				var radians = ((Math.PI/slices)*2) + (i * (2/slices));
+				ctx.moveTo(this.xpos, this.ypos);
+				ctx.lineTo((this.radius*(Math.cos(Math.PI*radians)))+this.xpos, (this.radius*(Math.sin(Math.PI*radians)))+this.ypos);
+			}
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgba(249, 187, 0, 1)";
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.arc(this.xpos, this.ypos, this.radius-10, 0, 2*Math.PI);
+			for(var i=0; i<=slices; i++){
+				var radians = ((Math.PI/slices)*2) + (i * (2/slices));
+				ctx.moveTo(this.xpos, this.ypos);
+				ctx.lineTo((this.radius*(Math.cos(Math.PI*radians)))+this.xpos, (this.radius*(Math.sin(Math.PI*radians)))+this.ypos);
+			}
+			ctx.lineTo(this.xpos, this.ypos);
+			ctx.fillStyle = "rgb(251, 255, 140)";
+			ctx.fill();
+			ctx.stroke();
+		}
+	  };
+	  
+	  ball.draw();
+	  ball.resize(40);
+	  ball.move(100,100);
+	  ball.draw();
+	  ball.resize(50);
+	  ball.move(163,163)
+	  ball.draw();
+	  
+	  ball.move(100, 500);
+	  ball.resize(100);
+	  ball.drawPizza();
+	  
+	  ball.move(500,500);
+	  ball.resize(100);
+	  ball.drawPizza7();
+	  
+	  ball.move(300,300);
+	  ball.resize(120);
+	  ball.drawPizzaSlices(15);
+    </script>
+	
+	
+
+  </body>
+
+</html>
